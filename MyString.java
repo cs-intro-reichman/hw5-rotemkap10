@@ -7,8 +7,8 @@ public class MyString {
         System.out.println(countChar(hello, 'h'));
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'z'));
-        System.out.println(subsetOf("no" , "dont"));
-        System.out.println(remove("dont", "dont"));
+        System.out.println(subsetOf("sap" , "space"));
+        System.out.println(remove("committee", "committee"));
         //// Put your other tests here.
     }
 
@@ -22,7 +22,7 @@ public class MyString {
      */
     public static int countChar(String str, char ch) {
         if(str == ""){
-            return -1;
+            return 0;
         }
         else{
             int count =0;
@@ -73,15 +73,17 @@ public class MyString {
             }
         }
         boolean x = true;
+        int count = 0;
         for(int i =0; i<str1.length(); i++){
             if(isThere(str1.charAt(i), str2)== true){
                 x = true;
+                count++;
             }
             else{
                 return false;
             } 
         }
-        if(x ==true){
+        if(x ==true && count<=str1.length()){
             return true;
         }
         return false;
@@ -100,10 +102,10 @@ public class MyString {
     public static String spacedString(String str) {
         String newString = "";
         if(str == ""){
-            return "-1";
+            return "";
         }
         for(int i =0; i<str.length();i++){
-            newString += str.charAt(i) + " ";
+            newString += str.charAt(i);
         }
         return newString;
     }
@@ -137,24 +139,25 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str2, String str1) {
-        if(str2.length()>str1.length() || str2.length() == str1.length()|| str2 =="" || str1 == ""){
-            return "-1";
+        if(str1 == ""){
+            return str2;
         }
-        for(int i =0; i<str2.length(); i++){
-            int indexOf = str1.indexOf(str2.charAt(i));
+        
+        for(int i =0; i<str1.length(); i++){
+            int indexOf = str2.indexOf(str1.charAt(i));
             if(indexOf ==0){
-                str1 = str1.substring(1);
+                str2 = str2.substring(1);
             }
             else{
-                if(indexOf == str1.length()-1){
-                    str1 = str1.substring(0,indexOf);
+                if(indexOf == str2.length()-1){
+                    str2 = str2.substring(0,indexOf);
                 }
                 else{
-                    str1 = str1.substring(0, indexOf) + str1.substring(indexOf+1);
+                    str2 = str2.substring(0, indexOf) + str2.substring(indexOf+1);
                 }
             }
         }
-        return str1;
+        return str2;
     }
 
     /**
