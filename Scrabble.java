@@ -72,7 +72,7 @@ public class Scrabble {
 			sum+=1000;
 		}
 		for(int i =0; i<word.length(); i++){ 
-			sum += SCRABBLE_LETTER_VALUES[(int)word.charAt(i)-97];
+			sum += SCRABBLE_LETTER_VALUES[(int)word.charAt(i)-97]*(word.length());
 		}
 		return sum;
 	}
@@ -187,9 +187,9 @@ public class Scrabble {
 		//// Uncomment the test you want to run
 		///testBuildingTheDictionary();  
 		///testScrabbleScore();    
-		///testCreateHands();  
+		testCreateHands();  
 		///testPlayHands();
-		playGame();
+		///playGame();
 		
 	}
 
@@ -203,10 +203,13 @@ public class Scrabble {
 	}
 	
 	public static void testScrabbleScore() {
-		System.out.println(wordScore("bee"));	
-		System.out.println(wordScore("babe"));
-		System.out.println(wordScore("runihello"));
+		System.out.println(wordScore("cat"));	
+		System.out.println(wordScore("dog"));
+		System.out.println(wordScore("quiz"));
+		System.out.println(wordScore("friendship"));
 		System.out.println(wordScore("running"));
+		System.out.println(wordScore(""));
+		System.out.println(wordScore("a"));
 	}
 	
 	public static void testCreateHands() {
@@ -216,7 +219,7 @@ public class Scrabble {
 	}
 	public static void testPlayHands() {
 		init();
-		playHand("helldont");
+		playHand("");
 		//playHand("arbffip");
 		//playHand("aretiin");
 	}

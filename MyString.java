@@ -7,8 +7,11 @@ public class MyString {
         System.out.println(countChar(hello, 'h'));
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'z'));
-        System.out.println(subsetOf("sap" , "space"));
-        System.out.println(remove("committee", "committee"));
+        System.out.println(subsetOf("pass" , "space"));
+        System.out.println(spacedString("silent"));
+        System.out.println(spacedString("a"));
+        System.out.println(spacedString(""));
+        System.out.println(spacedString("hi"));
         //// Put your other tests here.
     }
 
@@ -83,7 +86,7 @@ public class MyString {
                 return false;
             } 
         }
-        if(x ==true && count<=str1.length()){
+        if(x ==true && count<str1.length()){
             return true;
         }
         return false;
@@ -105,7 +108,7 @@ public class MyString {
             return "";
         }
         for(int i =0; i<str.length();i++){
-            newString += str.charAt(i);
+            newString += str.charAt(i) +" ";
         }
         return newString;
     }
