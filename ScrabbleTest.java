@@ -161,4 +161,19 @@ public class ScrabbleTest {
             System.setIn(originalIn);
         }
     }
+    public static String insertRandomly(char ch, String str) {
+        // Generate a random index between 0 and str.length()
+        int randomIndex = (int) (Math.random() * (str.length() + 1));
+        // Insert the character at the random index
+        String result = str.substring(0, randomIndex) + ch + str.substring(randomIndex);
+        return result;
 } 
+public static String randomStringOfLetters(int n) {
+    String newString = "";
+     for(int i =0; i<n; i++){
+         int x = (int)(Math.random()*26)+97;
+         newString+= (char)x + "";
+     }
+     return newString;
+    }
+}

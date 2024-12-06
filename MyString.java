@@ -110,7 +110,7 @@ public class MyString {
         for(int i =0; i<str.length();i++){
             newString += str.charAt(i) +" ";
         }
-        return newString;
+        return newString.substring(0, newString.length()-1);
     }
   
     /**

@@ -81,28 +81,10 @@ public class Scrabble {
 	// into it, at random indexes, the letters 'a' and 'e'
 	// (these two vowels make it easier for the user to construct words)
 	public static String createHand() {
-		int randomIndex = (int) (NUM_OF_WORDS * Math.random());
-		while(DICTIONARY[randomIndex].length()!=HAND_SIZE-2){
-			randomIndex = (int) (NUM_OF_WORDS * Math.random());
-		}
-		String newStr = DICTIONARY[randomIndex];
-		int index1 = 1;
-		int index2 = 1;
-		while(index1 ==index2){
-			index1 = (int)(Math.random()*newStr.length());
-			index2 = (int)(Math.random()*newStr.length());
-		}
-		 String finalString = "";
-		for(int i =0; i<newStr.length();i++){
-			if(index1 == i){
-				finalString+= "e";
-			}
-			else if(index2==i){
-				finalString+= "a";
-			}
-				finalString+= newStr.charAt(i);
-		}
-		return finalString;
+		String hand = randomStringOfLetters(HAND_SIZE-2);
+		hand = insertRandomly('e', hand);
+		hand = insertRandomly('a', hand);
+		return hand;
 	}
 	
     // Runs a single hand in a Scrabble game. Each time the user enters a valid word:
@@ -299,6 +281,21 @@ public class Scrabble {
             }
         }
         return false;
+    }
+	public static String insertRandomly(char ch, String str) {
+        // Generate a random index between 0 and str.length()
+        int randomIndex = (int) (Math.random() * (str.length() + 1));
+        // Insert the character at the random index
+        String result = str.substring(0, randomIndex) + ch + str.substring(randomIndex);
+        return result;
+} 
+public static String randomStringOfLetters(int n) {
+    String newString = "";
+     for(int i =0; i<n; i++){
+         int x = (int)(Math.random()*26)+97;
+         newString+= (char)x + "";
+     }
+     return newString;
     }
 
 }
