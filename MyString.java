@@ -12,6 +12,7 @@ public class MyString {
         System.out.println(spacedString("a"));
         System.out.println(spacedString(""));
         System.out.println(spacedString("hi"));
+        System.out.println(removeChar('c',  "cocid"));
         //// Put your other tests here.
     }
 
@@ -76,21 +77,19 @@ public class MyString {
             }
         }
         boolean x = true;
-        int count = 0;
         for(int i =0; i<str1.length(); i++){
             if(isThere(str1.charAt(i), str2)== true){
-                x = true;
-                count++;
+                str2 = removeChar(str1.charAt(i), str2);
             }
             else{
                 return false;
-            } 
+            }
+            
         }
-        if(x ==true && count<str1.length()){
+        if(x == true){
             return true;
         }
-        return false;
-        
+       return false;
         
     }
 
@@ -185,5 +184,14 @@ public class MyString {
             }
         }
         return false;
+    }
+    public static String removeChar(char c , String str){
+        String newStr = "";
+        for(int i =0; i<str.length(); i++){
+            if(c != str.charAt(i)){
+                newStr+= str.charAt(i);
+            }
+        }
+        return newStr;
     }
 }
