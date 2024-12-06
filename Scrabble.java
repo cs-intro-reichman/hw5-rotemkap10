@@ -115,7 +115,7 @@ public class Scrabble {
 						score = wordScore(input);
 						sum+= score;
 						hand =remove(input, hand);
-						System.out.println(input + " earned " + score + " points. Score: " + score + " points");
+						System.out.println(input + " earned " + score + " points. Score: " + score + " points\n");
 					}
 					else{
 						System.out.println("No such word in the dictionary. Try again.");
