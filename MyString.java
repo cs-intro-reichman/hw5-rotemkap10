@@ -7,7 +7,12 @@ public class MyString {
         System.out.println(countChar(hello, 'h'));
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'z'));
-        System.out.println(spacedString(hello));
+        System.out.println(subsetOf("pass" , "space"));
+        System.out.println(spacedString("silent"));
+        System.out.println(spacedString("a"));
+        System.out.println(spacedString(""));
+        System.out.println(spacedString("hi"));
+        System.out.println(removeChar('c',  "cocid"));
         //// Put your other tests here.
     }
 
@@ -20,8 +25,21 @@ public class MyString {
      * @return the number of times c appears in str
      */
     public static int countChar(String str, char ch) {
-        //// Replace the following statement with your code
-        return 0;
+        if(str == ""){
+            return 0;
+        }
+        else{
+            int count =0;
+            for(int i =0; i<str.length();i++){
+                if(str.charAt(i) == ch){
+                    count++;
+                }
+            }
+            return count;
+        }
+        
+    
+        
     }
 
     /** Returns true if str1 is a subset string str2, false otherwise
@@ -36,8 +54,43 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-         //// Replace the following statement with your code
-        return false;
+        if(str1.isEmpty()){
+            return true;
+        }
+        if(str2.isEmpty()){
+            return false;
+        }
+        if (str2.length() < str1.length())
+        {
+            return false;
+        }
+        for(int i =0; i<str1.length(); i++)
+        {
+            for(int j = 0; j<str2.length(); j++)
+            {
+                if(str1.charAt(i) == str2.charAt(j) && (j+str1.length()<=str2.length()))
+                {
+                     if(str1.equals(str2.substring(j,j+str1.length())))
+                        return true;
+                       
+                }
+            }
+        }
+        boolean x = true;
+        for(int i =0; i<str1.length(); i++){
+            if(isThere(str1.charAt(i), str2)== true){
+                str2 = removeChar(str1.charAt(i), str2);
+            }
+            else{
+                return false;
+            }
+            
+        }
+        if(x == true){
+            return true;
+        }
+       return false;
+        
     }
 
     /** Returns a string which is the same as the given string, with a space
@@ -49,8 +102,14 @@ public class MyString {
      * @return a string consisting of the characters of str, separated by spaces.
      */
     public static String spacedString(String str) {
-        //// Replace the following statement with your code
-        return null;
+        String newString = "";
+        if(str == ""){
+            return "";
+        }
+        for(int i =0; i<str.length();i++){
+            newString += str.charAt(i) +" ";
+        }
+        return newString.substring(0, newString.length()-1);
     }
   
     /**
@@ -64,9 +123,13 @@ public class MyString {
      * @return a randomly generated string, consisting of 'n' lowercase letters
      */
     public static String randomStringOfLetters(int n) {
-        //// Replace the following statement with your code
-        return null;
-    }
+        String newString = "";
+         for(int i =0; i<n; i++){
+             int x = (int)(Math.random()*26)+97;
+             newString+= (char)x + "";
+         }
+         return newString;
+        }
 
     /**
      * Returns a string consisting of the string str1, minus all the characters in the
@@ -77,9 +140,26 @@ public class MyString {
      * @param str2 - a string
      * @return a string consisting of str1 minus all the characters of str2
      */
-    public static String remove(String str1, String str2) {
-       //// Replace the following statement with your code
-        return null;
+    public static String remove(String str2, String str1) {
+        if(str1 == ""){
+            return str2;
+        }
+        
+        for(int i =0; i<str1.length(); i++){
+            int indexOf = str2.indexOf(str1.charAt(i));
+            if(indexOf ==0){
+                str2 = str2.substring(1);
+            }
+            else{
+                if(indexOf == str2.length()-1){
+                    str2 = str2.substring(0,indexOf);
+                }
+                else{
+                    str2 = str2.substring(0, indexOf) + str2.substring(indexOf+1);
+                }
+            }
+        }
+        return str2;
     }
 
     /**
@@ -97,4 +177,21 @@ public class MyString {
          String result = str.substring(0, randomIndex) + ch + str.substring(randomIndex);
          return result;
     }    
+    public static boolean isThere(char x , String str){
+        for(int i =0; i<str.length(); i++){
+            if(x == str.charAt(i)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static String removeChar(char c , String str){
+        String newStr = "";
+        for(int i =0; i<str.length(); i++){
+            if(c != str.charAt(i)){
+                newStr+= str.charAt(i);
+            }
+        }
+        return newStr;
+    }
 }
