@@ -122,7 +122,7 @@ public class Scrabble {
 					}
 				}
 				else{
-					System.out.println("Invaild word. Try again.");
+					System.out.println("Invalid word. Try again.");
 				}
 			}
 
